@@ -1,0 +1,90 @@
+<nav class="navbar nabar-light bg-primary">
+  <div class="container mb-2 mt-2">
+    <a class="navbar-brand" href="#">CRUD APPLICATION</a>
+    <div class="addbutton">
+      <button type="button" (click)=" clickAddEmployee()" class="btn btn-secondary" data-toggle="modal"
+        data-target="#exampleModal">Add Employee</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Emplyee Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="loginForm">
+                <div class="form-group">
+                  <label for="">Fisrt name</label>
+                  <input type="text" class="form-control" formControlName="firstname" placeholder="Enter firstname">
+                </div>
+                <div class="form-group">
+                  <label for="">Last name</label>
+                  <input type="text" class="form-control" formControlName="lastname" placeholder="Enter lastname">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Phone number</label>
+                  <input type="text" class="form-control" formControlName="mobile" placeholder="Enter number">
+                </div>
+                <div class="form-group">
+                  <label for="">Salary</label>
+                  <input type="text" class="form-control" formControlName="salary" placeholder="Salary">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel">Close</button>
+              <button type="button" class="btn btn-primary" (click)="postEmployeeData()" *ngIf="showAdd">Add</button>
+              <button type="button" class="btn btn-primary" (click)="updateEmployeeData()"
+                *ngIf="showUpdate">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tabledata">
+            <td>{{data.id}} </td>
+            <td>{{data.firstname}} </td>
+            <td>{{data.lastname}}</td>
+            <td>{{data.mobile}}</td>
+            <td>{{data.salary}}</td>
+
+            <td>
+              <div class="buttons">
+                <button class="btn btn-secondary mr-3" data-toggle="modal" data-target="#exampleModal"
+                  (click)="onEdit(data)"><i class="fa fa-bars"></i> Edit </button>
+                <button class="btn btn-danger" (click)="deleteUser(data)"><i class="fa fa-trash"></i> Trash</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "id": 7,
+      "firstname": "Mahesh",
+      "lastname": "Mahi",
+      "mobile": "+919700065263",
+      "salary": "60000/-"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
